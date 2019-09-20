@@ -17,6 +17,7 @@ function SearchForm({ status, values }) {
 
         <button type="submit">Submit!</button>
       </Form>
+
       {characters
         ? characters.results.map(el => <CharacterCard data={el} />)
         : null}

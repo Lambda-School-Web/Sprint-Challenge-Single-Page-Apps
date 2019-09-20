@@ -22,6 +22,12 @@ export default function LocationsList() {
       ) : (
         <h1>Loading Locations....</h1>
       )}
+      <button onClick={() => setCurrentPage(locationList.info.prev)}>
+        Prev Page
+      </button>
+      <button onClick={() => setCurrentPage(locationList.info.next)}>
+        Next Page
+      </button>
     </section>
   );
 }

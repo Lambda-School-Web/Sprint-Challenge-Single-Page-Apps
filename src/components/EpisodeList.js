@@ -22,6 +22,12 @@ export default function EpisodeList() {
       ) : (
         <h1>Loading Episodes....</h1>
       )}
+      <button onClick={() => setCurrentPage(episodeList.info.prev)}>
+        Prev Page
+      </button>
+      <button onClick={() => setCurrentPage(episodeList.info.next)}>
+        Next Page
+      </button>
     </section>
   );
 }

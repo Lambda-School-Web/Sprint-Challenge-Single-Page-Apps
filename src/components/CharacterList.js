@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
+import { makeStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "100%",
+    maxWidth: 500,
+    backgroundColor: theme.palette.background.paper
+  }
+}));
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -8,6 +19,7 @@ export default function CharacterList() {
     "https://rickandmortyapi.com/api/character/"
   );
   const [characterList, setCharacterList] = useState(null);
+  const classes = useStyles();
 
   useEffect(() => {
     axios
@@ -17,12 +29,18 @@ export default function CharacterList() {
   }, [currentPage]);
 
   return (
-    <section className="character-list">
+    <List className="classes.root">
       {characterList ? (
         characterList.results.map(el => <CharacterCard data={el} />)
       ) : (
         <h1>Loading Characters....</h1>
       )}
-    </section>
+      <button onClick={() => setCurrentPage(characterList.info.prev)}>
+        Prev Page
+      </button>
+      <button onClick={() => setCurrentPage(characterList.info.next)}>
+        Next Page
+      </button>
+    </List>
   );
 }
