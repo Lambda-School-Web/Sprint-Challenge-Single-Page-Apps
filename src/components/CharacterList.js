@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
+import FilterForm from "./FilterForm";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
@@ -19,19 +20,27 @@ export default function CharacterList() {
     "https://rickandmortyapi.com/api/character/"
   );
   const [characterList, setCharacterList] = useState(null);
+  const [characterArr, setCharacterArr] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
     axios
       .get(`${currentPage}`)
-      .then(res => setCharacterList(res.data))
+      .then(res => {
+        setCharacterList(res.data);
+        setCharacterArr(res.data.results);
+      })
       .catch(err => console.error(err));
   }, [currentPage]);
 
   return (
     <List className="classes.root">
-      {characterList ? (
-        characterList.results.map(el => <CharacterCard data={el} />)
+      <FilterForm
+        characterList={characterList}
+        setCharacterArr={setCharacterArr}
+      />
+      {characterArr ? (
+        characterArr.map(el => <CharacterCard data={el} />)
       ) : (
         <h1>Loading Characters....</h1>
       )}

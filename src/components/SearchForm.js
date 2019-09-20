@@ -13,9 +13,9 @@ function SearchForm({ status, values }) {
   return (
     <section className="search-form">
       <Form>
-        <Field type="text" name="name" placeholder="Name" />
+        <Field type="text" name="name" placeholder="Search" />
 
-        <button type="submit">Submit!</button>
+        <button type="submit">Search</button>
       </Form>
 
       {characters
@@ -32,7 +32,7 @@ const FormikSearchForm = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    name: Yup.string().required("You silly!!!")
+    name: Yup.string().required("")
   }),
   handleSubmit(values, { setStatus }) {
     axios
