@@ -62,8 +62,20 @@ export default function Header() {
             icon={<People />}
             {...a11yProps(1)}
           />
-          <Tab label="Locations" icon={<Room />} {...a11yProps(2)} />
-          <Tab label="Episodes" icon={<Movie />} {...a11yProps(3)} />
+          <Tab
+            label="Locations"
+            component={Link}
+            to="/locations"
+            icon={<Room />}
+            {...a11yProps(2)}
+          />
+          <Tab
+            label="Episodes"
+            component={Link}
+            to="/episodes"
+            icon={<Movie />}
+            {...a11yProps(3)}
+          />
           <Tab
             label="Search"
             component={Link}
