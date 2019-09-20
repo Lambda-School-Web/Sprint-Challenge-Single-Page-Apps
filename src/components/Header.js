@@ -9,6 +9,7 @@ import { Home } from "@material-ui/icons";
 import { People } from "@material-ui/icons";
 import { Room } from "@material-ui/icons";
 import { Movie } from "@material-ui/icons";
+import { Search } from "@material-ui/icons";
 
 function a11yProps(index) {
   return {
@@ -63,6 +64,13 @@ export default function Header() {
           />
           <Tab label="Locations" icon={<Room />} {...a11yProps(2)} />
           <Tab label="Episodes" icon={<Movie />} {...a11yProps(3)} />
+          <Tab
+            label="Search"
+            component={Link}
+            to="/search"
+            icon={<Search />}
+            {...a11yProps(4)}
+          />
         </Tabs>
       </AppBar>
     </div>
